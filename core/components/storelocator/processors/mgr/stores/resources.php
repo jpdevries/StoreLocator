@@ -26,7 +26,10 @@ if (!$modx->user->isAuthenticated('mgr')) return $modx->error->failure($modx->le
 
 $query = $modx->getOption('query', $scriptProperties, '');
 
-$resources = $modx->getCollection('modResource', array('pagetitle:LIKE' => '%'.$query.'%'));
+$c = $modx->newQuery('modResource');
+$c->sortby('pagetitle','ASC');
+$c->where(array('pagetitle:LIKE' => '%'.$query.'%'));
+$resources = $modx->getCollection('modResource', $c);
         
 $list = array();
 

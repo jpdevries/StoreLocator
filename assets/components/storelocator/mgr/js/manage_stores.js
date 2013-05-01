@@ -379,7 +379,7 @@ var slPageStores = Ext.extend(Ext.Panel, {
 		this.storeWindow = new Ext.Window({
 			padding: 10,
 			title: _('storelocator.store_settings'),
-			width: 350,
+			width: 450,
 			modal: true,
 			closeAction: 'hide',
 			items: [

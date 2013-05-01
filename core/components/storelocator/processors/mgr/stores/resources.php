@@ -31,7 +31,10 @@ $resources = $modx->getCollection('modResource', array('pagetitle:LIKE' => '%'.$
 $list = array();
 
 foreach ($resources as $resource) {
-    $list[] = $resource->toArray();
+	$a = $resource->toArray();
+	if(strlen($a['pagetitle']) > 34) $a['pagetitle'] = substr($a['pagetitle'],0,34)."...";
+	$a['pagetitle'] .= ' (' . $a['id'] . ')';
+    $list[] = $a;
 }
 
 return $this->outputArray($list, sizeof($list));
